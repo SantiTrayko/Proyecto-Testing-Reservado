@@ -31,7 +31,7 @@ describe('Test app reservado', () =>{
             assert.notInclude(resultado, '13:00');
         });
          
-        it('El arreglo de horarios no se modifica al intentar eliminar un horario inexistente. ', () =>{
+        it('El arreglo de horarios no se modificá al intentar eliminar un horario inexistente. ', () =>{
             let testRestaurant = mock();
             let valorInicial = testRestaurant.horarios;
             testRestaurant.reservarHorario('13:55');
@@ -40,7 +40,7 @@ describe('Test app reservado', () =>{
             assert.deepStrictEqual(valorInicial, resultado);
         });
 
-        it('El arreglo de horarios no se modifica al no pasar ningun parametro a la funcion reservarHorario().', () =>{
+        it('El arreglo de horarios no se modificá al no pasar ningún parametro a la funcion reservarHorario().', () =>{
             let testRestaurant = mock();
             let valorInicial = testRestaurant.horarios;
             testRestaurant.reservarHorario();
@@ -51,7 +51,7 @@ describe('Test app reservado', () =>{
     });
 
     describe('obtenerPuntuación()', () =>{
-        it('Calculo correcto del promedio.', () =>{
+        it('Cálculo correcto del promedio.', () =>{
             let testRestaurant = mock();
             let resultado = testRestaurant.obtenerPuntuacion();
             let resultadoEsperado = 7.4;
@@ -77,7 +77,7 @@ describe('Test app reservado', () =>{
             assert.include(resultado, 4);
         });
 
-        it('El arreglo de calificaciones no se modifica al intentar agregar una calificación con valor 0.', () =>{
+        it('El arreglo de calificaciones no se modificá al intentar agregar una calificación con valor 0.', () =>{
             let testRestaurant = mock();
             let valorInicial = testRestaurant.calificaciones;
             testRestaurant.calificar(0);
@@ -87,10 +87,9 @@ describe('Test app reservado', () =>{
 
         });
         
-        it('El arreglo de calificaciones no se modifica al intentar agregar una calificacion con valor > 10.', () =>{
+        it('El arreglo de calificaciones no se modificá al intentar agregar una calificacion con valor > 10.', () =>{
             let testRestaurant = mock();
-            testRestaurant.calificaciones = [1 , 2];
-            let valorInicial = [1 , 2];
+            let valorInicial = [6, 7, 9, 10, 5];
             testRestaurant.calificar(11);
             let resultado = testRestaurant.calificaciones;
 
@@ -124,7 +123,7 @@ describe('Test app reservado', () =>{
                 new Restaurant(6, "Green salad", "Ensalada", "Berlín", ["17:00", "19:00", "20:30"], "../img/ensalada2.jpg", [8, 3, 2, 1, 8, 7])
             ];
             let resultado = listadoDeRestaurantes.obtenerRestaurantes(null, null, '19:00');
-            assert.deepStrictEqual(resultadoEsperado, resultado);
+            assert.sameDeepMembers(resultadoEsperado, resultado);
         });
 
         it('Obtener un restaurant filtrando por un horario inexistente devuelve un arreglo vacio.', () =>{
@@ -144,7 +143,7 @@ describe('Test app reservado', () =>{
             ];
             let resultado = listadoDeRestaurantes.obtenerRestaurantes("Asiática", null, null);
 
-            assert.deepStrictEqual(resultadoEsperado, resultado);
+            assert.sameDeepMembers(resultadoEsperado, resultado);
         });
 
         it('Obtener un restaurant filtrando por un rubro inexistente devuelve un arreglo vacio.', () =>{
@@ -163,7 +162,7 @@ describe('Test app reservado', () =>{
             ];
             let resultado = listadoDeRestaurantes.obtenerRestaurantes(null, "Nueva York", null);
 
-            assert.deepStrictEqual(resultadoEsperado, resultado);
+            assert.sameDeepMembers(resultadoEsperado, resultado);
         });
 
         it('Obtener un restaurant filtrando por ciudad inexistente devulve un arreglo vacío.', () =>{
@@ -174,7 +173,7 @@ describe('Test app reservado', () =>{
             ];
             let resultado = listadoDeRestaurantes.obtenerRestaurantes(null, "Nueva York", null);
 
-            assert.deepEqual(resultadoEsperado, resultado);
+            assert.sameDeepMembers(resultadoEsperado, resultado);
         });
 
         
